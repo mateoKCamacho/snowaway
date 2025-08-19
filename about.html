@@ -4,46 +4,62 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About • SnowAway</title>
 <style>
-  :root{--accent:#e24a41}
-  *{box-sizing:border-box} html,body{margin:0;padding:0}
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;color:#e5e7eb;background:linear-gradient(135deg,#000 0%, #111 35%, #f7f7f7 100%)}
-  a{text-decoration:none}
-  nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.45);backdrop-filter:blur(6px)}
-  .brand{display:flex;align-items:center;gap:10px}
-  .brand img{height:42px;width:auto;display:block}
-  .logo-text{font-weight:900}
-  .logo-text .snow{color:#fff}.logo-text .away{color:var(--accent)}
-  .links a{margin-left:16px;color:#fff;font-weight:700;opacity:.9}.links a:hover{opacity:1;text-decoration:underline}
-  main{max-width:900px;margin:0 auto;padding:40px 20px}
-  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
-  footer{margin-top:40px;padding:24px 16px;text-align:center;color:#d1d5db;background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.08)}
+  :root{ --ink:#111827; --muted:#4b5563; --accent:#e24a41; --panel:#ffffff; --bg:#f3f4f6; --line:#e5e7eb; }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+  .mast{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line)}
+  .mast-inner{display:grid;grid-template-rows:auto auto;gap:6px;padding:14px 0}
+  .brand-row{display:flex;align-items:center;gap:14px}
+  .brand-row img{height:64px;width:auto;display:block}
+  .brand-name{font-weight:900;font-size:32px}
+  .brand-name .snow{color:#111}.brand-name .away{color:var(--accent)}
+  .subnav{display:flex;gap:18px;padding-left:78px}
+  .subnav a{font-weight:700}
+
+  main{padding:40px 0 50px}
+  h1{font-size:46px;line-height:1.1;margin:0 0 10px}
+  p{font-size:19px;line-height:1.65;color:var(--muted)}
+  ul{font-size:19px;color:var(--muted)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+  footer{margin-top:32px;padding:24px 0;text-align:center;color:#6b7280;border-top:1px solid var(--line);background:var(--panel)}
 </style>
 <body>
-  <nav>
-    <div class="brand">
-      <a href="index.html" aria-label="SnowAway Home"><img src="snowaway-logo.png" alt="SnowAway logo"></a>
-      <div class="logo-text"><span class="snow">Snow</span><span class="away">Away</span></div>
+  <div class="mast">
+    <div class="wrap mast-inner">
+      <div class="brand-row">
+        <a href="index.html" aria-label="SnowAway Home"><img src="snowaway-logo.png" alt="SnowAway logo"></a>
+        <div class="brand-name"><span class="snow">Snow</span><span class="away">Away</span></div>
+      </div>
+      <nav class="subnav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+      </nav>
     </div>
-    <div class="links">
-      <a href="index.html">Home</a><a href="about.html">About</a><a href="pricing.html">Plans & Pricing</a>
-    </div>
-  </nav>
+  </div>
 
-  <main>
+  <main class="wrap">
+    <h1>About SnowAway</h1>
     <div class="card">
-      <h2>About SnowAway</h2>
-      <p>We’re two university students from Kingston. We started SnowAway to earn winter income while helping neighbours stay safe and snow-free. No franchise, no call center — just the two of us, shovels in hand.</p>
+      <p>We’re two university students from Kingston who started SnowAway to make winter income while helping neighbours stay safe and snow-free. No franchise, no call centre — just the two of us, shovels in hand.</p>
       <ul>
-        <li><b>What we do:</b> Driveways, walkways, front steps. Light salting on request.</li>
-        <li><b>Where:</b> Kingston and nearby neighbourhoods for fast response.</li>
-        <li><b>When:</b> Early mornings, evenings, and during storms around class schedules.</li>
+        <li><b>What we do:</b> Clear driveways, walkways, and front steps — with salting included.</li>
+        <li><b>When we come:</b> We head out once ~<b>4 cm</b> of snow has accumulated. Precise timing can be hard to predict, but after overnight snow your driveway and paths are generally cleared <b>before 8:00 am</b>.</li>
+        <li><b>Where:</b> Kingston and nearby neighbourhoods so we can respond quickly in storms.</li>
       </ul>
+      <p>Questions or special instructions? Reach us any time at <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a> or <a href="tel:+12043914647">+1&nbsp;204&nbsp;391&nbsp;4647</a>.</p>
     </div>
   </main>
 
   <footer>
-    © 2025 SnowAway • Kingston, Ontario • Call/Text: <a href="tel:+12043914647" style="color:#fff">+1 204 391 4647</a> •
-    Email: <a href="mailto:info@snowawaykingston" style="color:#fff">info@snowawaykingston</a>
+    © 2025 SnowAway • Kingston, Ontario • Call/Text:
+    <a href="tel:+12043914647">+1 204 391 4647</a> •
+    Email: <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a>
   </footer>
 </body>
 </html>
+
