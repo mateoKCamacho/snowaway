@@ -3,58 +3,63 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SnowAway • Kingston Snow Shovelling</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+  :root{--navy:#0b2d3a;--ink:#17202a;--accent:#e24a41;--bg:#f9fbfc}
+  *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+  .wrap{max-width:880px;margin:0 auto;padding:40px 20px}
+  nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6ecf0;background:#fff;padding:14px 18px}
+  .brand{display:flex;gap:10px;align-items:center;font-weight:800;color:var(--navy)}
+  .brand img{height:42px;width:auto}
+  .links a{margin-left:16px;text-decoration:none;color:var(--navy);font-weight:600}
+  header{padding:64px 16px;text-align:center;background:linear-gradient(180deg,#fff,#f3f7fb)}
+  header h1{font-size:44px;line-height:1.1;margin:14px 0 8px;color:var(--navy)}
+  header p{font-size:18px;max-width:720px;margin:0 auto 22px}
+  .btn{display:inline-block;padding:12px 18px;border-radius:999px;border:2px solid var(--navy);font-weight:700;text-decoration:none;color:var(--navy)}
+  .btn.fill{background:var(--navy);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+  .card{background:#fff;border:1px solid #e6ecf0;border-radius:14px;padding:18px}
+  footer{margin-top:40px;padding:24px 16px;text-align:center;color:#6b7280;background:#fff;border-top:1px solid #e6ecf0}
+</style>
 <body>
-<nav>
-  <div class="brand">
-    <img src="snowaway-logo.png" alt="SnowAway logo">
-    <span>SnowAway</span>
-  </div>
-  <div class="navlinks">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="pricing.html">Plans & Pricing</a>
-  </div>
-</nav>
+  <nav>
+    <div class="brand">
+      <img src="snowaway-logo.png" alt="SnowAway logo" onerror="this.style.display='none'">
+      <span>SnowAway</span>
+    </div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="pricing.html">Plans & Pricing</a>
+    </div>
+  </nav>
 
-<header class="hero">
-  <div class="container">
-    <img src="snowaway-logo.png" alt="SnowAway logo" style="height:96px;width:auto;filter:drop-shadow(0 6px 18px rgba(2,6,23,.12));margin-bottom:12px">
+  <header>
+    <img src="snowaway-logo.png" alt="SnowAway logo" style="height:90px;width:auto;filter:drop-shadow(0 6px 18px rgba(2,6,23,.12))" onerror="this.style.display='none'">
     <h1>SnowAway</h1>
-    <p>Friendly, fast, and affordable snow shovelling in Kingston — handled by two local university students.
-    We clear driveways, sidewalks, and steps so you don’t have to bundle up.</p>
-    <div class="ctas">
+    <p>Friendly, fast, and affordable snow shovelling in Kingston — handled by two local university students.</p>
+    <p>
       <a class="btn fill" href="pricing.html">See Plans</a>
-      <a class="btn" href="mailto:REPLACE_EMAIL">Book now</a>
-    </div>
-  </div>
-</header>
+      <a class="btn" href="about.html">Who we are</a>
+    </p>
+  </header>
 
-<main class="container section">
-  <div class="grid">
-    <div class="card">
-      <h3>Local & Reliable</h3>
-      <p>We live in Kingston and stick to nearby neighbourhoods for quick response times during storms.</p>
+  <main class="wrap">
+    <div class="grid">
+      <div class="card"><h3>Local & Reliable</h3><p>We live in Kingston and stick to nearby neighbourhoods for quick response times during storms.</p></div>
+      <div class="card"><h3>Simple Pricing</h3><p>Choose on-demand at <b>$40 per job</b> or go worry-free with our <b>$599 Season Pass</b>.</p></div>
+      <div class="card"><h3>Clear Communication</h3><p>Text us when you need a clear path — we’ll confirm and send a photo when it’s done.</p></div>
     </div>
-    <div class="card">
-      <h3>Simple Pricing</h3>
-      <p>Choose on-demand at <b>$40 per job</b> or go worry-free with our <b>$599 Season Pass</b>.</p>
-    </div>
-    <div class="card">
-      <h3>Clear Communication</h3>
-      <p>Text us when you need a clear path — we’ll confirm and send a photo when it’s done.</p>
-    </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  <div class="container small">
+  <footer>
     © 2025 SnowAway • Kingston, Ontario • Call/Text: <a href="tel:+1REPLACE_PHONE">REPLACE_PHONE</a> •
     Email: <a href="mailto:REPLACE_EMAIL">REPLACE_EMAIL</a>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
+
+
 
 
 
