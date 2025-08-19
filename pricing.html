@@ -3,64 +3,79 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Plans & Pricing • SnowAway</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+  :root{--accent:#e24a41}
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;color:#e5e7eb;background:linear-gradient(135deg,#000 0%, #111 35%, #f7f7f7 100%)}
+  a{text-decoration:none}
+  nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.45);backdrop-filter:blur(6px)}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:42px;width:auto;display:block}
+  .logo-text{font-weight:900}
+  .logo-text .snow{color:#fff}.logo-text .away{color:var(--accent)}
+  .links a{margin-left:16px;color:#fff;font-weight:700;opacity:.9}.links a:hover{opacity:1;text-decoration:underline}
+  main{max-width:1000px;margin:0 auto;padding:40px 20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:12px}
+  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+  .badge{display:inline-block;background:var(--accent);color:#fff;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:8px}
+  .price{font-size:40px;font-weight:900;margin:6px 0;color:#fff}
+  table{width:100%;border-collapse:collapse;margin-top:14px}
+  th,td{border:1px solid rgba(255,255,255,.18);padding:10px;text-align:left}
+  footer{margin-top:40px;padding:24px 16px;text-align:center;color:#d1d5db;background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.08)}
+  .btn{display:inline-block;padding:10px 16px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:800}
+  .btn.fill{background:#fff;color:#000}
+</style>
 <body>
-<nav>
-  <div class="brand">
-    <img src="snowaway-logo.png" alt="SnowAway logo">
-    <span>SnowAway</span>
-  </div>
-  <div class="navlinks">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="pricing.html">Plans & Pricing</a>
-  </div>
-</nav>
-
-<main class="container section">
-  <h2>Plans & Pricing</h2>
-  <div class="grid" style="margin-top:12px">
-    <div class="card">
-      <span class="badge">On-Demand</span>
-      <h3>Per Job</h3>
-      <div class="price">$40</div>
-      <ul>
-        <li>Driveway + front walk + steps</li>
-        <li>Text when you need us</li>
-        <li>Photo confirmation when done</li>
-      </ul>
-      <p><a class="btn" href="mailto:REPLACE_EMAIL?subject=SnowAway%20Per-Job%20Request">Book a one-time clear</a></p>
+  <nav>
+    <div class="brand">
+      <a href="index.html" aria-label="SnowAway Home"><img src="snowaway-logo.png" alt="SnowAway logo"></a>
+      <div class="logo-text"><span class="snow">Snow</span><span class="away">Away</span></div>
     </div>
-    <div class="card" style="border-color: var(--navy);box-shadow:0 8px 20px rgba(16,24,40,0.08)">
-      <span class="badge">Most Popular</span>
-      <h3>Season Pass</h3>
-      <div class="price">$599</div>
-      <ul>
-        <li>Unlimited visits for the season</li>
-        <li>We come automatically after snowfalls</li>
-        <li>Priority during storms</li>
-      </ul>
-      <p><a class="btn fill" href="mailto:REPLACE_EMAIL?subject=SnowAway%20Season%20Pass">Get the Season Pass</a></p>
+    <div class="links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="pricing.html">Plans & Pricing</a>
     </div>
-  </div>
+  </nav>
 
-  <table class="table">
-    <thead><tr><th>Feature</th><th>Per Job ($40)</th><th>Season Pass ($599)</th></tr></thead>
-    <tbody>
-      <tr><td>Visit type</td><td>On demand</td><td>Automatic</td></tr>
-      <tr><td>Storm priority</td><td>Standard</td><td>High</td></tr>
-      <tr><td>Ideal for</td><td>Occasional snow</td><td>Whole winter peace-of-mind</td></tr>
-    </tbody>
-  </table>
+  <main>
+    <h2>Plans & Pricing</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="badge">On-Demand</span>
+        <h3>Per Job</h3>
+        <div class="price">$40</div>
+        <ul>
+          <li>Driveway + front walk + steps</li>
+          <li>Text or email when you need us</li>
+          <li>Photo confirmation when done</li>
+        </ul>
+        <p><a class="btn" href="mailto:info@snowawaykingston?subject=SnowAway%20Per-Job%20Request">Book a one-time clear</a></p>
+      </div>
+      <div class="card" style="box-shadow:0 8px 20px rgba(0,0,0,.25)">
+        <span class="badge">Most Popular</span>
+        <h3>Season Pass</h3>
+        <div class="price">$599</div>
+        <ul>
+          <li>Unlimited visits for the season</li>
+          <li>We come automatically after snowfalls</li>
+          <li>Priority during storms</li>
+        </ul>
+        <p><a class="btn fill" href="mailto:info@snowawaykingston?subject=SnowAway%20Season%20Pass">Get the Season Pass</a></p>
+      </div>
+    </div>
 
-  <p class="small">Need salt, back patio, or special requests? Easy add-ons — just let us know.</p>
-</main>
+    <table>
+      <thead><tr><th>Feature</th><th>Per Job ($40)</th><th>Season Pass ($599)</th></tr></thead>
+      <tbody>
+        <tr><td>Visit type</td><td>On demand</td><td>Automatic</td></tr>
+        <tr><td>Storm priority</td><td>Standard</td><td>High</td></tr>
+        <tr><td>Ideal for</td><td>Occasional snow</td><td>Whole winter peace-of-mind</td></tr>
+      </tbody>
+    </table>
+  </main>
 
-<footer>
-  <div class="container small">
-    © 2025 SnowAway • Kingston, Ontario • Call/Text: <a href="tel:+1REPLACE_PHONE">REPLACE_PHONE</a> •
-    Email: <a href="mailto:REPLACE_EMAIL">REPLACE_EMAIL</a>
-  </div>
-</footer>
+  <footer>
+    © 2025 SnowAway • Kingston, Ontario • Call/Text: <a href="tel:+12043914647" style="color:#fff">+1 204 391 4647</a> •
+    Email: <a href="mailto:info@snowawaykingston" style="color:#fff">info@snowawaykingston</a>
+  </footer>
 </body>
 </html>
