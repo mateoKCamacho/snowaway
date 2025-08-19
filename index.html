@@ -5,81 +5,62 @@
 <title>SnowAway • Kingston Snow Shovelling</title>
 <style>
   :root{
-    --ink:#111827; --muted:#4b5563; --accent:#e24a41; --panel:#ffffff; --bg:#f3f4f6; --line:#e5e7eb;
+    --bg:#000; --ink:#fff; --muted:#d1d5db; --accent:#e24a41;
+    --line:rgba(255,255,255,.12); --panel:#0a0a0a; --mast-h:76px;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-    background:var(--bg); color:var(--ink);
-  }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--ink)}
+
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 
-  /* MASTHEAD: logo top-left, name to the right, nav below name (left-aligned) */
-  .mast{
-    position:sticky; top:0; z-index:30;
-    background:var(--panel); border-bottom:1px solid var(--line);
-  }
-  .mast-inner{display:grid; grid-template-rows:auto auto; gap:6px; padding:14px 0}
-  .brand-row{display:flex; align-items:center; gap:14px}
-  .brand-row .logo{display:inline-flex; align-items:center}
-  .brand-row img{height:64px; width:auto; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,.1))}
-  .brand-name{font-weight:900; font-size:30px; letter-spacing:.2px; display:flex; gap:6px; align-items:baseline}
-  .brand-name .snow{color:#111}  /* dark for readability on light bg */
+  /* MASTHEAD: one row with logo | name | nav (all aligned center) */
+  .mast{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+  .mast-row{height:var(--mast-h);display:flex;align-items:center;gap:18px}
+  .logo img{height:64px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+  /* keep logo visually same height as nav/brand block */
+  @media (min-width:900px){ .logo img{height:68px} }
+
+  .brand-name{display:flex;align-items:center;gap:8px;font-weight:900;font-size:30px;letter-spacing:.2px;white-space:nowrap}
+  .brand-name .snow{color:#fff}
   .brand-name .away{color:var(--accent)}
-  .subnav{display:flex; gap:18px; padding-left:78px} /* aligns under name, next to logo */
-  .subnav a{font-weight:700; color:#111; opacity:.9}
-  .subnav a:hover{opacity:1; text-decoration:underline}
 
-  /* HERO */
-  header{padding:40px 0; text-align:left}
-  header .hero{display:grid; grid-template-columns:1fr; gap:12px}
-  header h1{font-size:42px; line-height:1.15; margin:6px 0}
-  header p{font-size:18px; color:var(--muted); margin:0 0 14px}
-  .cta-row{display:flex; gap:10px; flex-wrap:wrap}
-  .btn{display:inline-block; padding:12px 18px; border-radius:999px; border:2px solid #111; font-weight:800}
-  .btn.fill{background:#111; color:#fff}
+  nav.primary{display:flex;align-items:center;gap:22px;margin-left:10px;flex-wrap:wrap}
+  nav.primary a{font-weight:800;opacity:.95;padding:10px 4px;border-radius:6px}
+  nav.primary a:hover{opacity:1;text-decoration:underline}
 
-  /* CARDS & VALUES */
-  .section{padding:18px 0 44px}
-  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px}
-  .card{
-    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px;
-    box-shadow:0 2px 10px rgba(0,0,0,.03)
-  }
+  header{padding:42px 0 10px}
+  header h1{font-size:44px;line-height:1.1;margin:0 0 10px}
+  header p{font-size:18px;color:var(--muted);margin:0 0 16px}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 18px;border-radius:999px;border:2px solid #fff;font-weight:900}
+  .btn.fill{background:#fff;color:#000}
+
+  .section{padding:20px 0 46px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
   .muted{color:var(--muted)}
-  .icon{height:34px; width:34px; color:var(--accent); margin-bottom:6px}
+  .icon{height:34px;width:34px;color:var(--accent);margin-bottom:6px}
 
-  footer{
-    margin-top:28px; padding:24px 0; text-align:center; color:#6b7280;
-    border-top:1px solid var(--line); background:var(--panel)
-  }
+  footer{margin-top:28px;padding:24px 0;text-align:center;color:#a1a1aa;border-top:1px solid var(--line);background:var(--bg)}
 
   /* Snowfall overlay */
-  #snowfall{position:fixed; inset:0; pointer-events:none; z-index:40; opacity:.95; transition:opacity 1.6s ease}
+  #snowfall{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.95;transition:opacity 1.6s ease}
   #snowfall.fade-out{opacity:0}
-  @media (min-width:900px){
-    .brand-name{font-size:34px}
-    header h1{font-size:48px}
-  }
 </style>
 <body>
-  <!-- Snowfall canvas -->
   <canvas id="snowfall"></canvas>
 
   <div class="mast">
-    <div class="wrap mast-inner">
-      <div class="brand-row">
-        <!-- Logo (white snowman PNG) – clicking returns home -->
-        <a href="index.html" class="logo" aria-label="SnowAway Home">
-          <img src="snowaway-logo.png" alt="SnowAway logo">
-        </a>
-        <div class="brand-name" aria-label="SnowAway">
-          <span class="snow">Snow</span><span class="away">Away</span>
-        </div>
-      </div>
-      <nav class="subnav" aria-label="Primary">
+    <div class="wrap mast-row">
+      <!-- Logo (white snowman PNG) -->
+      <a class="logo" href="index.html" aria-label="SnowAway Home"><img src="snowaway-logo.png" alt="SnowAway logo"></a>
+
+      <!-- Brand + primary nav on the same row -->
+      <div class="brand-name"><span class="snow">Snow</span><span class="away">Away</span></div>
+
+      <nav class="primary" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="pricing.html">Pricing</a>
@@ -88,7 +69,7 @@
   </div>
 
   <header>
-    <div class="wrap hero">
+    <div class="wrap">
       <h1>Friendly, fast snow shovelling in Kingston.</h1>
       <p class="muted">Run by two local university students. We clear driveways, sidewalks, and steps — with salting included — so you don’t have to bundle up.</p>
       <div class="cta-row">
@@ -118,32 +99,23 @@
     <section style="margin-top:34px">
       <h2 style="margin:0 0 10px">Our Values</h2>
       <div class="grid">
-        <!-- Simplicity -->
+        <!-- Simplicity (checkmark) -->
         <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
           <h3>Simplicity</h3>
-          <p class="muted">Easy to book and easy to contact. Text or email takes seconds, with quick confirmations and clear pricing. Rescheduling is simple, and a photo confirms your driveway, walk, and steps are finished.</p>
+          <p class="muted">Book by text or email in seconds. Clear pricing, quick confirmation, simple rescheduling, and photo proof when your driveway, walk, and steps are finished.</p>
         </div>
-        <!-- Quality -->
+        <!-- Quality (clock) -->
         <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           <h3>Quality</h3>
-          <p class="muted">We show up on time — usually before 8:00 am after overnight snow. Clean edges, careful paths, respectful of your home, and salting included to keep surfaces safe and usable.</p>
+          <p class="muted">On-time visits — typically before 8:00 am after overnight snow. Clean edges, careful paths, and salting included. We treat your home with respect.</p>
         </div>
-        <!-- Professionalism -->
+        <!-- Professionalism (shield) -->
         <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/></svg>
           <h3>Professionalism</h3>
-          <p class="muted">We don’t cut corners. Clear communication, tidy work, and we return at night if it keeps snowing so your access stays safe without you needing to follow up.</p>
+          <p class="muted">No shortcuts, tidy work, clear updates. If it keeps snowing through the day, we return in the evening to keep driveways and walkways usable.</p>
         </div>
       </div>
     </section>
@@ -156,44 +128,38 @@
   </footer>
 
   <script>
-    // Gentle snowfall that lasts ~6.5s and fades out slowly
+    // Gentle snowfall (≈6.8s total; slower fade)
     (function(){
       const c = document.getElementById('snowfall'); if(!c) return;
       const ctx = c.getContext('2d'); let w,h,flakes=[],running=true;
       function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
       addEventListener('resize', resize, {passive:true}); resize();
-
       const COUNT = Math.min(120, Math.floor((innerWidth*innerHeight)/14000));
       for(let i=0;i<COUNT;i++){
-        flakes.push({
-          x: Math.random()*w, y: Math.random()*h,
-          r: Math.random()*2.2 + 0.8,
-          s: Math.random()*0.5 + 0.3,    // fall speed (slower)
-          w: Math.random()*0.7 + 0.2,    // drift
-          o: Math.random()*0.55 + 0.35   // opacity
-        });
+        flakes.push({ x:Math.random()*w, y:Math.random()*h, r:Math.random()*2.2+0.8,
+          s:Math.random()*0.5+0.3, w:Math.random()*0.7+0.2, o:Math.random()*0.55+0.35 });
       }
       function tick(){
         if(!running) return;
         ctx.clearRect(0,0,w,h);
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle='#fff';
         for(const f of flakes){
-          ctx.globalAlpha = f.o;
+          ctx.globalAlpha=f.o;
           ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();
-          f.y += f.s; f.x += Math.sin(f.y*0.02)*f.w;
-          if(f.y > h+6){ f.y = -6; f.x = Math.random()*w; }
+          f.y+=f.s; f.x+=Math.sin(f.y*0.02)*f.w;
+          if(f.y>h+6){ f.y=-6; f.x=Math.random()*w; }
         }
         requestAnimationFrame(tick);
       }
       tick();
-
-      // Fade starts later and is slower
-      setTimeout(()=>{ c.classList.add('fade-out'); }, 5200); // start fade ~5.2s
-      setTimeout(()=>{ running=false; c.remove(); }, 6800);   // stop/remove ~6.8s
+      setTimeout(()=>{ c.classList.add('fade-out'); }, 5200);
+      setTimeout(()=>{ running=false; c.remove(); }, 6800);
     })();
   </script>
 </body>
 </html>
+
+
 
 
 
