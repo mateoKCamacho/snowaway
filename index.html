@@ -14,7 +14,7 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 
-  /* Masthead: logo | brand | nav in one row */
+  /* Masthead: logo | brand | nav on one row */
   .mast{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
   .mast-row{height:var(--mast-h);display:flex;align-items:center;gap:18px}
   .logo img{height:64px;width:auto;display:block}
@@ -34,21 +34,24 @@
 
   .section{padding:20px 0 46px}
   .muted{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .icon{height:34px;width:34px;color:var(--accent);margin-bottom:6px}
 
-  /* What we offer block */
+  /* What we offer */
   .offer{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;margin-top:28px}
   .offer h2{margin:0 0 10px;font-size:28px}
   .offer p{font-size:18px;line-height:1.7;color:var(--muted);margin:0 0 10px}
-  .offer-graphic{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;align-items:center;justify-content:center}
-  .offer-graphic svg{width:100%;max-width:440px;height:auto;color:#fff}
+  .offer-graphic{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .offer-graphic img{display:block;width:100%;height:auto;max-width:460px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.45))}
 
-  /* Reveal animation on scroll */
+  /* Reveal animation */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
   .reveal.show{opacity:1;transform:none}
 
   footer{margin-top:28px;padding:24px 0;text-align:center;color:#a1a1aa;border-top:1px solid var(--line);background:var(--bg)}
 
-  /* Snowfall overlay (kept from previous version) */
+  /* Snowfall overlay */
   #snowfall{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.95;transition:opacity 1.6s ease}
   #snowfall.fade-out{opacity:0}
   @media (max-width:900px){ .offer{grid-template-columns:1fr} }
@@ -80,23 +83,49 @@
   </header>
 
   <main class="wrap section">
-    <!-- WHAT WE OFFER (replaces the 3 boxes) -->
+    <!-- WHAT WE OFFER -->
     <section class="offer reveal" id="offer">
       <div class="offer-graphic" aria-hidden="true">
-        <!-- simple shovel-worker silhouette (inline SVG) -->
-        <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="150" cy="42" r="22" fill="currentColor"/>
-          <path d="M92 116c30-8 64-8 96 0M150 64l-20 38-12 32M118 134l-40 60M60 210l-24 10" />
-          <path d="M214 120l26 56-24 12-26-56z" fill="currentColor" stroke="none"/>
-          <path d="M180 112l18 38" />
-          <path d="M132 102l48 10" />
-          <path d="M78 194c18 8 58 8 76-8" />
-        </svg>
+        <img src="shovel.png" alt="Shovels">
       </div>
       <div>
         <h2>What we offer</h2>
         <p>Seasonal snow removal from <b>October through April</b> across Kingston.</p>
         <p>We clear your <b>front steps, driveway, and front walkway</b> — with <b>salting included</b> so surfaces stay safe.</p>
+      </div>
+    </section>
+
+    <!-- VALUES (back under What we offer) -->
+    <section class="reveal" id="values" style="margin-top:34px">
+      <h2 style="margin:0 0 10px">Our Values</h2>
+      <div class="grid">
+        <!-- Simplicity -->
+        <div class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <h3>Simplicity</h3>
+          <p class="muted">Book by text or email in seconds. Clear pricing, quick confirmation, simple rescheduling, and photo proof when your driveway, walk, and steps are finished.</p>
+        </div>
+        <!-- Quality -->
+        <div class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+          <h3>Quality</h3>
+          <p class="muted">On-time visits — typically before 8:00 am after overnight snow. Clean edges, careful paths, and salting included. We treat your home with respect.</p>
+        </div>
+        <!-- Professionalism -->
+        <div class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/>
+          </svg>
+          <h3>Professionalism</h3>
+          <p class="muted">No shortcuts, tidy work, clear updates. If it keeps snowing through the day, we return in the evening to keep driveways and walkways usable.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -108,7 +137,7 @@
   </footer>
 
   <script>
-    // Gentle snowfall (≈6.8s total; slower fade)
+    // Snowfall (≈6.8s total; slower fade)
     (function(){
       const c = document.getElementById('snowfall'); if(!c) return;
       const ctx = c.getContext('2d'); let w,h,flakes=[],running=true;
@@ -121,33 +150,29 @@
       }
       function tick(){
         if(!running) return;
-        ctx.clearRect(0,0,w,h);
-        ctx.fillStyle='#fff';
+        ctx.clearRect(0,0,w,h); ctx.fillStyle='#fff';
         for(const f of flakes){
-          ctx.globalAlpha=f.o;
-          ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();
-          f.y+=f.s; f.x+=Math.sin(f.y*0.02)*f.wv;
-          if(f.y>h+6){ f.y=-6; f.x=Math.random()*w; }
-        }
-        requestAnimationFrame(tick);
+          ctx.globalAlpha=f.o; ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();
+          f.y+=f.s; f.x+=Math.sin(f.y*0.02)*f.wv; if(f.y>h+6){ f.y=-6; f.x=Math.random()*w; }
+        } requestAnimationFrame(tick);
       }
-      tick();
-      setTimeout(()=>{ c.classList.add('fade-out'); }, 5200);
+      tick(); setTimeout(()=>{ c.classList.add('fade-out'); }, 5200);
       setTimeout(()=>{ running=false; c.remove(); }, 6800);
     })();
 
-    // Reveal on scroll for "What we offer"
+    // Reveal on scroll (offer + values)
     (function(){
-      const el = document.getElementById('offer');
-      if(!el) return;
+      const items = document.querySelectorAll('.reveal');
       const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ el.classList.add('show'); io.disconnect(); } });
-      },{threshold:0.25});
-      io.observe(el);
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+      },{threshold:0.2});
+      items.forEach(el=>io.observe(el));
     })();
   </script>
 </body>
 </html>
+
+
 
 
 
