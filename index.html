@@ -4,28 +4,75 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SnowAway • Kingston Snow Shovelling</title>
 <style>
-  :root{--navy:#0b2d3a;--ink:#17202a;--accent:#e24a41;--bg:#f9fbfc}
-  *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
-  .wrap{max-width:880px;margin:0 auto;padding:40px 20px}
-  nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6ecf0;background:#fff;padding:14px 18px}
-  .brand{display:flex;gap:10px;align-items:center;font-weight:800;color:var(--navy)}
-  .brand img{height:42px;width:auto}
-  .links a{margin-left:16px;text-decoration:none;color:var(--navy);font-weight:600}
-  header{padding:64px 16px;text-align:center;background:linear-gradient(180deg,#fff,#f3f7fb)}
-  header h1{font-size:44px;line-height:1.1;margin:14px 0 8px;color:var(--navy)}
-  header p{font-size:18px;max-width:720px;margin:0 auto 22px}
-  .btn{display:inline-block;padding:12px 18px;border-radius:999px;border:2px solid var(--navy);font-weight:700;text-decoration:none;color:var(--navy)}
-  .btn.fill{background:var(--navy);color:#fff}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
-  .card{background:#fff;border:1px solid #e6ecf0;border-radius:14px;padding:18px}
-  footer{margin-top:40px;padding:24px 16px;text-align:center;color:#6b7280;background:#fff;border-top:1px solid #e6ecf0}
+  :root{--navy:#0b2d3a;--ink:#e5e7eb;--accent:#e24a41}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(135deg,#000 0%, #111 35%, #f7f7f7 100%);
+    min-height:100vh;
+  }
+  a{text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 20px}
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:30;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(0,0,0,.45);backdrop-filter:blur(6px)
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:42px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+  .logo-text{font-weight:900;letter-spacing:.2px}
+  .logo-text .snow{color:#fff}
+  .logo-text .away{color:var(--accent)}
+  .links a{margin-left:16px;color:#fff;font-weight:700;opacity:.9}
+  .links a:hover{opacity:1;text-decoration:underline}
+
+  /* Hero */
+  header{padding:64px 16px;text-align:center}
+  header h1{font-size:44px;line-height:1.1;margin:14px 0 10px}
+  header p{font-size:18px;max-width:720px;margin:0 auto 22px;opacity:.95}
+  .btn{display:inline-block;padding:12px 18px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:800}
+  .btn.fill{background:#fff;color:#000;border-color:#fff}
+  .btn + .btn{margin-left:10px}
+
+  /* Cards / sections */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
+  .card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;padding:18px;color:#f3f4f6
+  }
+  .values{margin-top:34px}
+  .values h2{margin:0 0 10px;font-size:28px;color:#fff}
+  .values .card h3{margin:.2rem 0 .35rem;color:#fff}
+
+  footer{
+    margin-top:40px;padding:24px 16px;text-align:center;color:#d1d5db;
+    background:rgba(0,0,0,.5);border-top:1px solid rgba(255,255,255,.08)
+  }
+
+  /* Snowfall overlay */
+  #snowfall{
+    position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.9;transition:opacity .7s ease
+  }
+  #snowfall.fade-out{opacity:0}
 </style>
 <body>
+  <!-- Snowfall canvas -->
+  <canvas id="snowfall"></canvas>
+
   <nav>
     <div class="brand">
-      <img src="snowaway-logo.png" alt="SnowAway logo" onerror="this.style.display='none'">
-      <span>SnowAway</span>
+      <!-- Logo image is now a button back to Home -->
+      <a href="index.html" aria-label="SnowAway Home">
+        <img src="snowaway-logo.png" alt="SnowAway logo">
+      </a>
+      <div class="logo-text" aria-hidden="true">
+        <span class="snow">Snow</span><span class="away">Away</span>
+      </div>
     </div>
     <div class="links">
       <a href="index.html">Home</a>
@@ -35,8 +82,8 @@
   </nav>
 
   <header>
-    <img src="snowaway-logo.png" alt="SnowAway logo" style="height:90px;width:auto;filter:drop-shadow(0 6px 18px rgba(2,6,23,.12))" onerror="this.style.display='none'">
-    <h1>SnowAway</h1>
+    <img src="snowaway-logo.png" alt="" style="height:90px;width:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6));display:block;margin:0 auto 8px">
+    <h1><span class="logo-text"><span class="snow">Snow</span><span class="away">Away</span></span></h1>
     <p>Friendly, fast, and affordable snow shovelling in Kingston — handled by two local university students.</p>
     <p>
       <a class="btn fill" href="pricing.html">See Plans</a>
@@ -48,16 +95,79 @@
     <div class="grid">
       <div class="card"><h3>Local & Reliable</h3><p>We live in Kingston and stick to nearby neighbourhoods for quick response times during storms.</p></div>
       <div class="card"><h3>Simple Pricing</h3><p>Choose on-demand at <b>$40 per job</b> or go worry-free with our <b>$599 Season Pass</b>.</p></div>
-      <div class="card"><h3>Clear Communication</h3><p>Text us when you need a clear path — we’ll confirm and send a photo when it’s done.</p></div>
+      <div class="card"><h3>Clear Communication</h3><p>Text or email when you need a clear path — we confirm and send a photo when it’s done.</p></div>
     </div>
+
+    <!-- VALUES -->
+    <section class="values">
+      <h2>Our Values</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Simplicity</h3>
+          <p>Booking takes seconds by text or email. Fast confirmation, transparent pricing, and no surprises. Easy to reach, easy to reschedule, and a photo proof every time your driveway, walkway, and steps are fully cleared.</p>
+        </div>
+        <div class="card">
+          <h3>Quality</h3>
+          <p>We arrive when promised — usually before 8am after overnight snow. Clean lines, careful paths, and salt when requested. We protect doors, trim, and surfaces and treat your home with the same respect as ours.</p>
+        </div>
+        <div class="card">
+          <h3>Professionalism</h3>
+          <p>No shortcuts. Clear communication and visible gear. We document work, tidy up, and respect neighbors. If it keeps snowing during the day, we return in the evening so your access is safe without hassle.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2025 SnowAway • Kingston, Ontario • Call/Text: <a href="tel:+1REPLACE_PHONE">REPLACE_PHONE</a> •
-    Email: <a href="mailto:REPLACE_EMAIL">REPLACE_EMAIL</a>
+    © 2025 SnowAway • Kingston, Ontario • Call/Text: <a href="tel:+12043914647" style="color:#fff">+1 204 391 4647</a> •
+    Email: <a href="mailto:info@snowawaykingston" style="color:#fff">info@snowawaykingston</a>
   </footer>
+
+  <script>
+    // Lightweight snowfall that disappears after ~3 seconds
+    (function(){
+      const c = document.getElementById('snowfall');
+      if(!c) return;
+      const ctx = c.getContext('2d');
+      let w,h,flakes=[],running=true;
+      function resize(){w= c.width = innerWidth; h = c.height = innerHeight;}
+      addEventListener('resize', resize, {passive:true}); resize();
+
+      const COUNT = Math.min(90, Math.floor((innerWidth*innerHeight)/18000)); // scale with viewport
+      for(let i=0;i<COUNT;i++){
+        flakes.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: Math.random()*2 + 1,
+          s: Math.random()*0.6 + 0.4, // speed
+          w: Math.random()*0.8 + 0.2, // horizontal drift
+          o: Math.random()*0.5 + 0.4  // opacity
+        });
+      }
+
+      function tick(){
+        if(!running) return;
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = '#fff';
+        for(const f of flakes){
+          ctx.globalAlpha = f.o;
+          ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();
+          f.y += f.s; f.x += Math.sin(f.y*0.02)*f.w;
+          if(f.y > h+5) { f.y = -5; f.x = Math.random()*w; }
+        }
+        requestAnimationFrame(tick);
+      }
+      tick();
+
+      // Fade out and stop after 3 seconds
+      setTimeout(()=>{ c.classList.add('fade-out'); }, 2800);
+      setTimeout(()=>{ running=false; c.remove(); }, 3600);
+    })();
+  </script>
 </body>
 </html>
+
+
 
 
 
