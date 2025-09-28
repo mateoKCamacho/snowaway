@@ -1,60 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About • SnowAway</title>
-<style>
-  :root{ --bg:#000; --ink:#fff; --muted:#d1d5db; --accent:#e24a41; --line:rgba(255,255,255,.12); --panel:#0a0a0a; --mast-h:76px; }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--ink)}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-
-  .mast{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
-  .mast-row{height:var(--mast-h);display:flex;align-items:center;gap:18px}
-  .logo img{height:64px;width:auto;display:block}
-  @media (min-width:900px){ .logo img{height:68px} }
-  .brand-name{display:flex;align-items:center;gap:8px;font-weight:900;font-size:30px}
-  .brand-name .snow{color:#fff}.brand-name .away{color:var(--accent)}
-  nav.primary{display:flex;align-items:center;gap:22px;margin-left:10px}
-  nav.primary a{font-weight:800;padding:10px 4px}
-
-  main{padding:44px 0 54px}
-  h1{font-size:48px;line-height:1.1;margin:0 0 12px}
-  p,li{font-size:20px;line-height:1.7;color:var(--muted)}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-  ul{margin:0 0 0 20px}
-  footer{margin-top:34px;padding:24px 0;text-align:center;color:#a1a1aa;border-top:1px solid var(--line);background:var(--bg)}
-</style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — SnowAway</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-  <div class="mast">
-    <div class="wrap mast-row">
-      <a class="logo" href="index.html" aria-label="SnowAway Home"><img src="snowaway-logo.png" alt="SnowAway logo"></a>
-      <div class="brand-name"><span class="snow">Snow</span><span class="away">Away</span></div>
-      <nav class="primary" aria-label="Primary">
-        <a href="index.html">Home</a><a href="about.html">About</a><a href="pricing.html">Pricing</a>
-      </nav>
+  
+<header>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:10px">
+      <img src="assets/snowaway-logo.png" alt="SnowAway logo" />
+    </a>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+  <section id="contact" class="wrap" aria-labelledby="contact-title">
+    <div class="grid-2">
+      <div class="card">
+        <h2 id="contact-title">Contact SnowAway</h2>
+        <p>Call or email to reserve your season pass or to schedule a one-time clearing.</p>
+        <p><strong>Phone:</strong> <a href="mailto:snowawaykingston@gmail.com">(204) 391 4647</a><br>
+           <strong>Email:</strong> <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a><br>
+           <strong>Address:</strong> 98 Division St, Kingston, ON</p>
+        <a class="cta" href="mailto:snowawaykingston@gmail.com">Email us now</a>
+      </div>
+      <div class="card">
+        <h2>FAQs</h2>
+        <dl class="faq">
+          <dt>How fast do you come after it snows?</dt>
+          <dd>We begin routes as storms end. After overnight snow, your property is generally cleared before 08:00, with follow-ups during long events.</dd>
+          <dt>What exactly do you clear?</dt>
+          <dd>Driveways, front steps, pathways to doors, and your sidewalk frontage—kept wide for canes and walkers, with careful step treatment.</dd>
+          <dt>When do you trigger service?</dt>
+          <dd>Automatic visits at 5 cm. We start route planning around 4 cm to stay on time.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+  
+<footer>
+  <div class="footer">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="assets/snowaway-logo.png" alt="SnowAway logo small" style="height:28px;width:auto"/>
+      <strong>SnowAway</strong>
+    </div>
+    <div>
+      <span>Phone <a href="mailto:snowawaykingston@gmail.com">(204) 391 4647</a> • Email <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a> • 98 Division St, Kingston, ON</span>
+    </div>
+    <div>
+      <a class="cta" href="pricing.html">Get 10% off your season pass before nov 1</a>
     </div>
   </div>
+</footer>
 
-  <main class="wrap">
-    <h1>About SnowAway</h1>
-    <div class="card">
-      <p>We’re two university students from Kingston. We started SnowAway to earn winter income while helping neighbours stay safe and snow-free. No franchise, no call centre — just the two of us, shovels in hand.</p>
-      <ul>
-        <li><b>What we do:</b> Clear driveways, walkways, and front steps — with salting included.</li>
-        <li><b>When we come:</b> We head out once about <b>4 cm</b> of snow has accumulated. Timing can be hard to predict, but after overnight snow your driveway and paths are generally cleared <b>before 8:00 am</b>.</li>
-        <li><b>Where:</b> Kingston and nearby neighbourhoods so we can respond quickly in storms.</li>
-      </ul>
-      <p>Questions or special instructions? Reach us at <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a> or <a href="tel:+12043914647">+1&nbsp;204&nbsp;391&nbsp;4647</a>.</p>
-    </div>
-  </main>
-
-  <footer>
-    © 2025 SnowAway • Kingston, Ontario • Call/Text:
-    <a href="tel:+12043914647">+1 204 391 4647</a> •
-    Email: <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a>
-  </footer>
 </body>
 </html>
