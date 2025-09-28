@@ -117,3 +117,6 @@ footer{ background:#fafafa; }
 .duo .right img{ max-width:260px; height:auto; }
 @media (max-width:900px){ .duo{ grid-template-columns:1fr; } .duo .left{ text-align:left; } }
 
+@media (max-width:900px){ .duo{ grid-template-columns:1fr; } .duo .left{ text-align:left; } }
+
+
