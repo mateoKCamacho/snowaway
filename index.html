@@ -1,176 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>snowaway • Kingston Snow Shovelling</title>
-<style>
-  :root{
-    --bg:#000; --ink:#fff; --muted:#d1d5db; --accent:#e24a41;
-    --line:rgba(255,255,255,.12); --panel:#0a0a0a; --mast-h:76px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--ink)}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-
-  /* Masthead: logo | brand | nav on one row */
-  .mast{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
-  .mast-row{height:var(--mast-h);display:flex;align-items:center;gap:18px}
-  .logo img{height:64px;width:auto;display:block}
-  @media (min-width:900px){ .logo img{height:68px} }
-  .brand-name{display:flex;align-items:center;gap:8px;font-weight:900;font-size:30px;letter-spacing:.2px;white-space:nowrap}
-  .brand-name .snow{color:#fff}.brand-name .away{color:var(--accent)}
-  nav.primary{display:flex;align-items:center;gap:22px;margin-left:10px;flex-wrap:wrap}
-  nav.primary a{font-weight:800;opacity:.95;padding:10px 4px;border-radius:6px}
-  nav.primary a:hover{opacity:1;text-decoration:underline}
-
-  header{padding:42px 0 10px}
-  header h1{font-size:44px;line-height:1.1;margin:0 0 10px}
-  header p{font-size:18px;color:var(--muted);margin:0 0 16px}
-  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:12px 18px;border-radius:999px;border:2px solid #fff;font-weight:900}
-  .btn.fill{background:#fff;color:#000}
-
-  .section{padding:20px 0 46px}
-  .muted{color:var(--muted)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-  .icon{height:34px;width:34px;color:var(--accent);margin-bottom:6px}
-
-  /* What we offer */
-  .offer{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;margin-top:28px}
-  .offer h2{margin:0 0 10px;font-size:28px}
-  .offer p{font-size:18px;line-height:1.7;color:var(--muted);margin:0 0 10px}
-  .offer-graphic{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .offer-graphic img{display:block;width:100%;height:auto;max-width:460px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.45))}
-
-  /* Reveal animation */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
-  .reveal.show{opacity:1;transform:none}
-
-  footer{margin-top:28px;padding:24px 0;text-align:center;color:#a1a1aa;border-top:1px solid var(--line);background:var(--bg)}
-
-  /* Snowfall overlay */
-  #snowfall{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.95;transition:opacity 1.6s ease}
-  #snowfall.fade-out{opacity:0}
-  @media (max-width:900px){ .offer{grid-template-columns:1fr} }
-</style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SnowAway — Snow Removal in Sydenham Ward, Kingston</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-  <canvas id="snowfall"></canvas>
+  
+<header>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:10px">
+      <img src="assets/snowaway-logo.png" alt="SnowAway logo" />
+    </a>
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <div class="mast">
-    <div class="wrap mast-row">
-      <a class="logo" href="index.html" aria-label="SnowAway Home"><img src="snowaway-logo.png" alt="SnowAway logo"></a>
-      <div class="brand-name"><span class="snow">Snow</span><span class="away">Away</span></div>
-      <nav class="primary" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
-      </nav>
-    </div>
-  </div>
-
-  <header>
-    <div class="wrap">
-      <h1>Friendly, fast snow shovelling in Kingston.</h1>
-      <p class="muted">Run by two local university students. We clear driveways, sidewalks, and steps — salting included</p>
-      <div class="cta-row">
-        <a class="btn fill" href="pricing.html">See Plans</a>
-        <a class="btn" href="mailto:snowawaykingston@gmail.com">Book via Email</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap section">
-    <!-- WHAT WE OFFER -->
-    <section class="offer reveal" id="offer">
-      <div class="offer-graphic" aria-hidden="true">
-        <img src="shovel.png" alt="Shovels">
-      </div>
+  <main class="wrap" id="home">
+    <section class="card hero" style="margin-bottom:18px">
       <div>
-        <h2>What we offer</h2>
-        <p>Seasonal snow removal from <b>October through April</b> across Kingston.</p>
-        <p>We clear your <b>front steps, driveway, and front walkway</b> — with <b>salting included</b> so surfaces stay safe.</p>
+        <div class="kicker">Snow removal • Kingston</div>
+        <h1>Wake up to a clear, safe path—every snowfall.</h1>
+        
       </div>
     </section>
 
-    <!-- VALUES (back under What we offer) -->
-    <section class="reveal" id="values" style="margin-top:34px">
-      <h2 style="margin:0 0 10px">Our Values</h2>
-      <div class="grid">
-        <!-- Simplicity -->
-        <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
-          <h3>Simplicity</h3>
-          <p class="muted">Book by text or email in seconds. Clear pricing, quick confirmation, simple rescheduling, and photo proof when your driveway, walk, and steps are finished.</p>
+    <section id="offer" class="section card"><h2>What We Offer</h2>
+<p class="kicker">A Season Pass Guarantees</p>
+<div class="feature-grid">
+  <div class="box feature"><p>Full-Season Plan</p></div>
+  <div class="box feature"><p>Automatic service at 5 cm</p></div>
+  <div class="box feature"><p>Full Season Coverage</p></div>
+  <div class="box feature"><p>Text or Email Notifications</p></div>
+</div>
+</section>
+<section class="section card">
+<div class="duo">
+  <div class="left">
+    <h3>Snow Removal Simplified.</h3>
+    <p>Snow removal doesn’t have to be a hassle. We make it quick, easy, and stress-free so you can enjoy winter without the worry.</p>
+    <p>From shoveling and plowing to snow blowing and de-icing, we handle it all for homes and businesses. Our team works fast to keep your property clear and safe.</p>
+    <p>With reliable service after every snowfall, you can count on us to keep walkways, driveways, and parking areas ready for use all season long.</p>
+  </div>
+  <div class="right">
+    <img src="assets/snowaway-logo.png" alt="SnowAway logo" />
+  </div>
+</div>
+</section>
+
+    <section id="why" class="section">
+      <h2>Why Choose Us?</h2>
+      <div class="columns">
+        <div class="box">
+          <h3>Reliability</h3>
+          <p>We consistently show up on time, ready to work, regardless of the weather. Our dependable scheduling ensures you’re never left waiting, giving you peace of mind all season long.</p>
         </div>
-        <!-- Quality -->
-        <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-          </svg>
+        <div class="box">
+          <h3>Communication</h3>
+          <p>We keep you informed with timely text and email updates. From service triggers to completion notices, you’ll always know what’s happening—only clarity and trust.</p>
+        </div>
+        <div class="box">
           <h3>Quality</h3>
-          <p class="muted">On-time visits — typically before 8:00 am after overnight snow. Clean edges, careful paths, and salting included. We treat your home with respect.</p>
+          <p>Our trained team uses the right equipment to protect your property while delivering a clean, thorough job. We focus on detail, safety, and efficiency to ensure top-notch results every time.</p>
         </div>
-        <!-- Professionalism -->
-        <div class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/>
-          </svg>
-          <h3>Professionalism</h3>
-          <p class="muted">No shortcuts, tidy work, clear updates. If it keeps snowing through the day, we return in the evening to keep driveways and walkways usable.</p>
+      </div>
+    </section>
+
+    <section id="steps" class="section">
+      <h2>Step-by-Step</h2>
+      <div class="stepgrid">
+        <div class="box step">
+          <div class="num">1</div>
+          <h3>Reserve a Pass</h3>
+          <p>Secure your seasonal snow removal pass easily online or by phone, ensuring your property is on our priority list before winter weather arrives.</p>
+        </div>
+        <div class="box step">
+          <div class="num">2</div>
+          <h3>Driveway Cleared</h3>
+          <p>Whenever snow falls, our crew arrives promptly to clear your driveway and walkways—keeping your property safe, accessible, and clear all winter long.</p>
         </div>
       </div>
     </section>
   </main>
+  
+<footer>
+  <div class="footer">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="assets/snowaway-logo.png" alt="SnowAway logo small" style="height:28px;width:auto"/>
+      <strong>SnowAway</strong>
+    </div>
+    <div>
+      <span>Phone <a href="mailto:snowawaykingston@gmail.com">(204) 391 4647</a> • Email <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a> • 98 Division St, Kingston, ON</span>
+    </div>
+    <div>
+      <a class="cta" href="pricing.html">Get 10% off your season pass before nov 1</a>
+    </div>
+  </div>
+</footer>
 
-  <footer>
-    © 2025 SnowAway • Kingston, Ontario • Call/Text:
-    <a href="tel:+12043914647">+1 204 391 4647</a> •
-    Email: <a href="mailto:snowawaykingston@gmail.com">snowawaykingston@gmail.com</a>
-  </footer>
-
-  <script>
-    // Snowfall (≈6.8s total; slower fade)
-    (function(){
-      const c = document.getElementById('snowfall'); if(!c) return;
-      const ctx = c.getContext('2d'); let w,h,flakes=[],running=true;
-      function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; }
-      addEventListener('resize', resize, {passive:true}); resize();
-      const COUNT = Math.min(120, Math.floor((innerWidth*innerHeight)/14000));
-      for(let i=0;i<COUNT;i++){
-        flakes.push({ x:Math.random()*w, y:Math.random()*h, r:Math.random()*2.2+0.8,
-          s:Math.random()*0.5+0.3, wv:Math.random()*0.7+0.2, o:Math.random()*0.55+0.35 });
-      }
-      function tick(){
-        if(!running) return;
-        ctx.clearRect(0,0,w,h); ctx.fillStyle='#fff';
-        for(const f of flakes){
-          ctx.globalAlpha=f.o; ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();
-          f.y+=f.s; f.x+=Math.sin(f.y*0.02)*f.wv; if(f.y>h+6){ f.y=-6; f.x=Math.random()*w; }
-        } requestAnimationFrame(tick);
-      }
-      tick(); setTimeout(()=>{ c.classList.add('fade-out'); }, 5200);
-      setTimeout(()=>{ running=false; c.remove(); }, 6800);
-    })();
-
-    // Reveal on scroll (offer + values)
-    (function(){
-      const items = document.querySelectorAll('.reveal');
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
-      },{threshold:0.2});
-      items.forEach(el=>io.observe(el));
-    })();
-  </script>
 </body>
 </html>
+
 
 
 
