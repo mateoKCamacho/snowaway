@@ -119,25 +119,31 @@ footer{ background:#fafafa; }
 
 @media (max-width:900px){ .duo{ grid-template-columns:1fr; } .duo .left{ text-align:left; } }
 /* --- Hero centering --- */
-.hero{
-  display:flex;              /* override previous grid */
+/* === HERO + BRAND (drop-in replacement) === */
+.card.hero{
+  display:flex !important;   /* override any earlier grid */
   flex-direction:column;
-  align-items:center;        /* horizontal centering */
-  justify-content:center;    /* vertical centering */
-  min-height:260px;          /* height of the hero card */
+  align-items:center;        /* horizontal center */
+  justify-content:center;    /* vertical center */
+  min-height:300px;          /* tweak as you like */
   text-align:center;
 }
-.hero > *{ margin:0; }
+.card.hero > *{ margin:0; }
+.card.hero .kicker{ margin-bottom:6px; }
+.card.hero h1{ margin:0; }
 
-/* --- Brand text beside the logo in header --- */
+/* Brand text beside the logo in header */
 .brand-name{
-  color:#ffffff;             /* legible on blue header */
+  color:#ffffff;             /* readable on blue header */
   font-weight:800;
   letter-spacing:.5px;
-  text-transform:lowercase;  /* as requested */
+  text-transform:lowercase;
   font-size:1.05rem;
 }
-.nav img{ height:48px; width:auto; }  /* consistent logo size */
+
+/* Consistent logo size in nav */
+.nav img{ height:48px; width:auto; }
+
 
 
 
