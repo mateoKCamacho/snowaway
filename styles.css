@@ -118,5 +118,27 @@ footer{ background:#fafafa; }
 @media (max-width:900px){ .duo{ grid-template-columns:1fr; } .duo .left{ text-align:left; } }
 
 @media (max-width:900px){ .duo{ grid-template-columns:1fr; } .duo .left{ text-align:left; } }
+/* --- Hero centering --- */
+.hero{
+  display:flex;              /* override previous grid */
+  flex-direction:column;
+  align-items:center;        /* horizontal centering */
+  justify-content:center;    /* vertical centering */
+  min-height:260px;          /* height of the hero card */
+  text-align:center;
+}
+.hero > *{ margin:0; }
+
+/* --- Brand text beside the logo in header --- */
+.brand-name{
+  color:#ffffff;             /* legible on blue header */
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:lowercase;  /* as requested */
+  font-size:1.05rem;
+}
+.nav img{ height:48px; width:auto; }  /* consistent logo size */
+
+
 
 
